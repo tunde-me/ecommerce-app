@@ -1,0 +1,14 @@
+#!/bin/bash
+#Purpose: This script will backup all the contents of /var/log/auth.log into a monitor.log file and move the new file into a remote server.
+#Author: Team3Group5
+
+read -p "Please enter backup filename: " filename
+
+cat /var/log/auth.log > $filename
+ls
+scp -i $key.pem $filename $user@$ip:/home/ubuntu
+
+
+conjob command: 
+crontab -e 
+15 17 * * *  /home/ubuntu/monitor.log > /home/ubuntu

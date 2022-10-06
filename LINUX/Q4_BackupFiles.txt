@@ -1,0 +1,19 @@
+#!/bin/bash
+# Author: Team3.Group5:HealthApp
+# This script is for o backup and archive all logs from /var/log/auth.log
+echo " "
+echo "step 1: preview the log file:"
+echo " "
+cat /var/log/auth.log
+echo " "
+echo "step 2: re-direct the output to the new file:"
+echo " "
+echo "Group5.07-30-2022.txt"
+cat /var/log/auth.log > Group5.07-30-2022.txt
+echo " "
+echo "grep the new file from the directory"
+echo " "
+ls | grep Group5.07-30-2022.txt
+echo " "
+echo "Done!"
+echo " " && sleep 3

@@ -1,0 +1,24 @@
+ #!/bin/bash
+# Author:Engineer Chima
+# This script is for moving files to servers
+
+read -p "to move a file to /home/ubuntu, enter the file's absolute path: " fpath
+mv $fpath /home/ubuntu
+
+read -p "please enter the name of the file you want to move: " filename
+
+password="Team3"
+user="etech1"
+ips=( 172.31.42.99 172.31.45.158 )
+sudo apt install ssh pass -y #to install sshpass
+
+for i in ${ips[@]}; do
+sshpass -p "$password" scp $filename  $user@$i:/tmp
+done
+
+status=$?
+if [ "$status" -eq 0 ]; then
+        rm $filename && rm -r
+else
+        echo "Script failure"
+fi 

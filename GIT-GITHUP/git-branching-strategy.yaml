@@ -1,0 +1,29 @@
+Git Best Practices:
+    Developers are addvised to use branching strategy and pull requests
+    They are adviced to Commit once finish the task. 
+    Don’t Commit Half-Done - do a git stash
+    Test your code before commit.
+    Write Good Commit Messages before you are committing 
+    Try to use git commands rather than GUI tools.
+
+What is your branching strategy in Etech consulting.:
+Thank you very much for that question.
+
+1. In my environment we maintain a minimum of 3 main branches —
+   DEV: which Contains latest fixes and features
+   UAT: which conains Current State of UAT Environment
+   MASTER: which contains Current State of Production Environment
+
+2. All feature branches  are created from DEV branch and are named after Jira tickets for development.
+
+3. Once tests are satisfactory the features can be merged into the DEV branch at any time.
+
+4. On a UAT release, the DEV branch is directly merged into the UAT branch through a pull request. CI/CD now deploys those features onto the UAT environment
+
+5. After careful monitoring, a Production release is scheduled. The UAT branch is merged into the MASTER branch through a pull request. CI/CD deploys the 
+   features onto the Production environment
+
+6. During releases, development is not halted. Engineers can continue their work on the DEV branch as per usual.
+
+  Hotfix branches are created directly from MASTER and are deployed to production
+  Once team is happy MASTER is now sync unto UAT  and DEV

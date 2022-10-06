@@ -1,0 +1,225 @@
+Jenkins Plugins and their use cases:
+
+Plugins are community-developed modules that you can install on your Jenkins server. It helps you with more functionalities that are not natively available in Jenkins.
+For example, if you want to upload a file to s3 bucket from Jenkins, you can install an AWS Jenkins plugin and use the abstracted plugin functionalities to upload the file rather than writing your own logic in AWS CLI. The plugin takes care of error and exception handling.
+
+1. Docker Pipeline
+Jenkins plugin which allows building, testing, and using Docker images from Jenkins Pipeline projects.
+
+
+2.Docker Plugin for Jenkins
+This plugin allows one to spawn Docker containers and run builds on them automatically. With this plugin, DevOps teams can use a Docker host to dynamically provision a docker container as a Jenkins agent node that runs a single build.
+
+3.jacoco-plugin (JaCoCo)
+A plugin for Jenkins to capture and visualize code coverage testing results for projects using the JaCoCo for code-coverage analysis.
+
+4.Blue Ocean
+ Blue Ocean reduces clutter and increases clarity for every member of your team through the following key features:
+
+Sophisticated visualizations of CD pipelines for fast and intuitive comprehension of software pipeline status.
+
+Pipeline editor that makes automating CD pipelines approachable by guiding the user through an intuitive and visual process to create a pipeline.
+
+Personalization of the Jenkins UI to suit the role-based needs of each member of the DevOps team.
+
+Pinpoint precision when intervention is needed and/or issues arise. The Blue Ocean UI shows where in the pipeline attention is needed, facilitating exception handling and increasing productivity.
+
+Native integration for branch and pull requests enables maximum developer productivity when collaborating on code with others in GitHub and Bitbucket.
+
+5. PIT Mutation
+This plugin displays pitmutation report statistics.
+
+6.SonarQube Scanner
+This plugin allow easy integration of SonarQube™, the open source platform for Continuous Inspection of code quality.
+
+7.Maven Integration
+ This plugin provides an advanced integration for Maven 2/3 projects.
+
+Even if Jenkins provides natively a Maven builder to use a build step in classical Jenkins jobs (freestyle, ...) this plugin provides a more advanced integration with specific a specific job type providing uniq features like:
+
+Automatic configuration of reporting plugins (Junit, Findbugs, ...)
+Automatic triggering across jobs based on SNAPSHOTs published/consumed
+Incremental build - only build changed modules
+Build modules in parallel on multiple executors/nodes
+Post build deployment of binaries only if the project succeeded and all tests passed
+
+8.Terraform
+Allows users to launch infrastructure using Terraform as a build wrapper.
+This plugin provides an auto-installer to install the Terraform binary.
+
+9.Kubernetes CLI
+Allows you to configure kubectl to interact with Kubernetes clusters from within your jobs. Any tool built on top of kubectl can then be used from your pipelines to perform deployments
+
+ 
+ 
+
+10.Jira Jenkins Plugin
+This plugin integrates Jenkins with Jira to give you more visibility into the development pipeline. With the plugin, you can automatically send data about builds and deployments from Jenkins to Jira or you can track issues from Jira in Jenkins.
+
+11.Slack Integration
+The great thing about Slack is that is not only a chat client, but it is a platform that allows you even to integrate with other tools. And yes, you can integrate Jenkins into Slack. Once you install the plugin, Jenkins can send notifications about the build status into a specified channel. 
+
+
+12.JUnit Plugin
+The most common types of build in Jenkins are the ones that test the application. By default, Jenkins can run JUnit tests and it provides you with the test results
+
+  other plugins to know:
+    ssh agent plugins
+    slack notifications plugins
+    import job plugins
+    ansible tower plugins
+    Email Extension Plugin
+    SSH Build Agents plugin
+    LDAP Plugin
+    Timestamper
+    Pipeline
+    Pipeline:Declarative
+    Pipeline:REST API Plugin
+    Pipeline:Multibranch
+    GitHub plugin
+    check the use of the above plugins from your jenkins UI
+
+
+
+
+Features and Architecture Explained
+
+Jenkins helps to automate and accelerate the software development process. 
+Here are some of the most common applications of Jenkins:
+
+1. Increased Code Coverage
+Code coverage is determined by the number of lines of code a component has and how many of them get executed. Jenkins increases code coverage which ultimately promotes a transparent development process among the team members.
+
+2. No Broken Code
+Jenkins ensures that the code is good and tested well through continuous integration. The final code is merged only when all the tests are successful. This makes sure that no broken code is shipped into production.
+
+
+
+What are the Jenkins Features?
+Jenkins offers many attractive features for developers:
+
+Easy Installation
+Jenkins is a platform-agnostic, self-contained Java-based program, ready to run with packages for Windows, Mac OS, and Unix-like operating systems.
+Easy Configuration
+Jenkins is easily set up and configured using its web interface, featuring error checks and a built-in help function.
+
+Available Plugins
+There are hundreds of plugins available in the Update Center, integrating with every tool in the CI and CD toolchain.
+
+Extensible
+Jenkins can be extended by means of its plugin architecture, providing nearly endless possibilities for what it can do.
+
+Easy Distribution
+Jenkins can easily distribute work across multiple machines for faster builds, tests, and deployments across multiple platforms.
+
+Free Open Source
+Jenkins is an open-source resource backed by heavy community support.
+As a part of our learning about what is Jenkins, let us next learn about the Jenkins architecture.
+
+Advantages of Using Jenkins
+Jenkins is a powerful tool truly built and friendly for developers. Here are some of the most significant advantages of using Jenkins:
+
+1. Free to Use
+Jenkins is fully open-source and free to use. Since its development in 2011, it is the most preferred CI/CD tool used by developers in both early-stage startups and big organizations.
+
+2. Rich Plugin Ecosystem
+There are over a thousand different plugins that can be used to enhance the functionality of a Jenkins environment and suit the specific needs of an organization.
+
+3. Easy Integration 
+Jenkins can be easily integrated with a number of popular cloud platforms such as Google Cloud, Digital Ocean, Amazon EC2 and more.
+
+Disadvantages of Using Jenkins
+Jenkins also has its own share of disadvantages. Here are some of the most common ones:
+
+1. Developer Centric
+Jenkins is more developer-centric and feature-driven. A person may need to have some sort of developer experience to use Jenkins.
+
+2. Setting Change Issues
+There are some issues (such as Jenkins not starting up) that you may face when you change the settings in Jenkins. These issues can come up when you install some plugins as well. Fortunately, Jenkins has a large user base so you can search online for a solution whenever you are faced with these issues.
+
+The Bottom Line
+Jenkins provides developers with an excellent framework from which they can develop and test new codes, resulting in the faster delivery of better quality software. By avoiding costly delays and log jams, developers can become an organization's MVPs.
+
+
+Jenkins Credentials
+When you set up Jenkins pipelines, there are scenarios where it needs to connect to a cloud account, a server, a database, or an API endpoint using secrets.
+
+In Jenkins, you can save different types of secrets as a credential.
+
+Secret text
+Username & password
+SSH keys
+All credentials are encrypted (AES) by Jenkins. The secrets are stored in $JENKINS_HOME/secrets/ directory. It is very important to secure this directory and exclude it from Jenkins backups.
+
+
+
+
+
+System Configuration group:
+Screens for configuring resources for your Jenkins instance.
+
+Configure System
+Configure global settings and paths for the Jenkins instance
+
+Global Tool Configuration
+Configure tools, their locations, and automatic installers
+
+Manage Plugins
+Add, update, remove, disable/enable plugins that extend the functionality of Jenkins.
+
+Manage Nodes and Clouds
+Add, remove, control, and monitor the nodes used for the agents on which build jobs run.
+
+Configuration as Code
+Configure your Jenkins instance using a human-readable YAML file rather than the UI. This is an optional feature that appears in this group only when the plugin is installed on your controller.
+
+
+Security group:
+Screens for configuring security features for your Jenkins instance. See Securing Jenkins for general information about managing Jenkins security.
+
+Configure Global Security
+Set configuration parameters that secure your Jenkins instance.
+
+Manage Credentials
+Configure the credentials that provide secure access to third-party sites and applications that interact with Jenkins.
+
+Configure Credential Providers
+Configure credential providers and types
+Manage Users
+Manage users defined in the Jenkins user database. This is not used if you use a different security realm such as LDAP or AD.
+
+
+
+Status Information group
+System Information
+Displays information about the Jenkins environment.
+
+System Log
+Jenkins log that contains all java.uil.logging output related to Jenkins.
+
+Load Statistics
+Displays information about resource utilization on you Jenkins instance.
+
+About Jenkins
+Provides version and license information for your Jenkins instance.
+
+
+
+Troubleshooting group
+Manage Old Data
+Remove configuration information related to plugins that have been removed from the instance.
+
+Tools and Actions group
+Screens for common management tasks and management tools that enable you to do administrative tasks without using the UI.
+
+Reload Configuration from Disk
+Discard all data that is loaded in memory and reload everything from the file system. This is useful when you modify configuration files directly on disk.
+
+Jenkins CLI
+How to use the Jenkins CLI from a shell or script.
+
+Script Console
+Execute an Apache Groovy script for administration, troubleshooting, and diagnostics.
+
+Prepare for Shutdown
+Prevents new builds from starting so that the system can be shut down safely

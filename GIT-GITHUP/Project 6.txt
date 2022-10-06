@@ -1,0 +1,19 @@
+Etech Consulting Devops Master Class
++1 3478735512/+1 6677868741
+GIT-Module
+
+Project 6
+Etech Consulting Devops Master Class
++1 3478735512/+1 6677868741
+GIT-Module
+Group level project:
+1. Export a csv format document showing all the user member of your private organization in github.
+2. Write the steps you will take to contribute to a project in your company
+3. Create a repository in your private organization and move “N” shell script to that repository 
+where N is the number of group members. Note each member will create a script with their name $yournmae.sh and 
+enter codes to do system analysis .
+- Assigned your reviews to etechDevops or Eng Rudolph
+4. Each member of the group should clone their organization/repository and transfer the content into 
+their private repository then send us a screenshot to the regular submission emails.
+
+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

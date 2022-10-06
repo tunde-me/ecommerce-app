@@ -1,0 +1,25 @@
+Write a shell script that will backup all the contents of /var/log/auth.log into a monitor.log file and moves the monitor.log file into a remote server in 
+question 2 
+- configure a cronjob that will run every day at 15 mins after 5pm, every month and every day of the week 
+
+#Cronjob filename: group5conjon.sh
+
+#!/bin/bash
+#Purpose: This script will backup all the contents of /var/log/auth.log into a monitor.log file and move the new file into a remote server. 
+#Author: Team3Group5
+
+echo "Create backup file"
+
+cat /var/log/auth.log > group5monitor.log
+ls
+scp -i scp.pem group5monitor.log ubuntu@172.31.95.185:/home/ubuntu
+
+echo "Create cronjob for backup at 5:15pm every day"
+
+
+
+crontab -
+crontab -e 15 17 * * *  /home/ubuntu/monitor.log > /home/ubuntu
+
+crontab -e
+watch cat /tmp/greetings.log

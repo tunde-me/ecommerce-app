@@ -1,0 +1,244 @@
+sunday,08-07-2022:
+==================
+switch case: use to compress codes so as to reduce writting many lines
+
+syntax
+case "VAR" in 
+  Result1){};;
+    Result2){};;
+    Result3){};;
+esac
+  #switch case
+CARS="$1"
+#CARS1= "$2"
+  
+#Pass the variable in string
+case "$CARS" in
+    #case 1
+    "mercedes") echo "Headquarters - Affalterbach, Germany" ;;
+      
+    #case 2
+    "audi") echo "Headquarters - Ingolstadt, Germany" ;;
+      
+    #case 3
+    "bmw") echo "Headquarters - Chennai, Tamil Nadu, India" ;;
+esac
+
+/etc/systemd/system
+
+Continue: use to control flow sequence of proceses at a specific point
+
+example
+#!/bin/bash
+i=0
+while [[ $i -lt 5 ]]; do
+  ((i++))
+  if [[ "$i" == '2' ]]; then
+    continue
+  fi
+  echo "Number: $i"
+done
+
+echo 'All Done!'
+
+
+i=$[ $i + 1 ]
+
+
+Cronjobs: These are automated tasks configured to run at specific time triggered by the system timer
+           and control by cron deamon in the background
+
+ what command can you use to stop all cronjobs?
+ ans: $ sudo systemctl stop cron # disbale all cronjob configs
+      $ sudo systemctl status cron # to check the status of the cron daemon
+      $ sudo systemctl restart cron # to refresh the cron daemon
+
+syntax of cron job settings:
+
+a b c d e /directory/command output  # syntax format for configuring a cronjob
+
+a --> Minutes    0-59
+b --> Hour       0-23
+c --> Day of month 0-31
+d --> Month     0=none,12=december
+e --> Day of the week  0=sunday,7=sunday    0=sunday, 1=monday,2=tuesday,3=wednesday 4=thursday, 5=friday,6=saturday,7=sunday
+
+cron format
+* * * * * /directory/scriptname.sh > /output
+
+examples
+* 2 0 * 4 /root/backup.sh --> every 2am on wednesdays every month
+* 2 0 * * /root/backup.sh --> every 2am every day
+30 * * * * /root/backup.sh --> every 30 minutes
+0 * * * */root/backup.sh  --> every minutes
+0 2 * * * /root/backup.sh --> every 2 hours
+
+cronjob configuration steps:
+  step 1: Define your job flow by writting a shell script
+$ sudo vi firstcronjob.sh
+step2: use a crontab generator online to easily define your timer
+
+* * * * * /directory/firstcronjob.sh > /tmp  #example
+step3: On your server set the crontab table in the crontab file for the current user
+$ crontab -e  <enter>
+
+You can add any number of scheduled tasks, one per line inside the crontab file
+
+Edit crontab for a Different User:
+
+$ crontab –u other_username –e
+
+List Existing Cron Jobs:
+
+$ crontab –l  --> to list all cronjobs set by current user
+$ crontab -l -u $user --> to list all cronjobs set by user $user 
+
+How to block different users from running cronjobs:
+
+steps: create a file called cron.allow
+$ sudo vi /etc/cron.allow 
+add the users who should be granted permissions to run cronjobs on each line starting with root user 
+
+$ sudo vi /etc/cron.deny 
+add the usernames to block them from running cronjob( deny access and permissions)
+
+How can you run a script in background mode?
+ans: ./scriptname.sh&
+Always add "&" infront of your scriptname to make it run in the background so as to free up your terminal
+for different functions
+
+How can you bring a script from background mode to foreground mode?
+ans: $ fg <process_id> constant, where "fg" means foreground
+
+How can you run a script in background mode and also ignore network instabilities?
+ans: nohup ./scriptname.sh&, where "nohup" means "no hang up" so the system ignores connectivity problems and runs
+
+linux command to view process analysis
+$ sudo apt install atop 
+$ atop --> gives you more informations than top command
+$ htop --> printout easy systems analysis health state like CPU, MEMORY,RAM
+$ ps r --> list only running process on a session
+$ ps T --> list all processes running on the terminal
+
+
+more script for your practice:
+script to install a devops lab in AWS/AZURE/GCP
+
+#!/bin/bash
+#COMPANY=Etech Consulting
+#CompileDate=10/10/2021
+#Run this script on an ubuntu 18.04 server
+
+echo ".........----------------#################._.-.-INSTALL-.-._.#################----------------........."
+PS1='\[\e[01;36m\]\u\[\e[01;37m\]@\[\e[01;33m\]\H\[\e[01;37m\]:\[\e[01;32m\]\w\[\e[01;37m\]\$\[\033[0;37m\] '
+echo "PS1='\[\e[01;36m\]\u\[\e[01;37m\]@\[\e[01;33m\]\H\[\e[01;37m\]:\[\e[01;32m\]\w\[\e[01;37m\]\$\[\033[0;37m\] '" >> ~/.bashrc
+sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
+source ~/.bashrc
+
+apt-get autoremove -y  #removes the packages that are no longer needed
+apt-get update
+systemctl daemon-reload
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+KUBE_VERSION=1.20.0
+apt-get update
+apt-get install -y kubelet=${KUBE_VERSION}-00 vim build-essential jq python3-pip docker.io kubectl=${KUBE_VERSION}-00 kubernetes-cni=0.8.7-00 kubeadm=${KUBE_VERSION}-00
+pip3 install jc
+
+### UUID of VM 
+### comment below line if this Script is not executed on Cloud based VMs
+jc dmidecode | jq .[1].values.uuid -r
+
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "storage-driver": "overlay2"
+}
+EOF
+mkdir -p /etc/systemd/system/docker.service.d
+
+systemctl daemon-reload
+systemctl restart docker
+systemctl enable docker
+systemctl enable kubelet
+systemctl start kubelet
+
+echo ".........----------------#################._.-.-KUBERNETES-.-._.#################----------------........."
+rm /root/.kube/config
+kubeadm reset -f
+
+# uncomment below line if your host doesnt have minimum requirement of 2 CPU
+# kubeadm init --kubernetes-version=${KUBE_VERSION} --ignore-preflight-errors=NumCPU --skip-token-print
+kubeadm init --kubernetes-version=${KUBE_VERSION} --skip-token-print
+
+mkdir -p ~/.kube
+sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+sleep 60
+
+echo "untaint controlplane node"
+kubectl taint node $(kubectl get nodes -o=jsonpath='{.items[].metadata.name}')  node-role.kubernetes.io/master-
+kubectl get node -o wide
+
+
+
+echo ".........----------------#################._.-.-Java and MAVEN-.-._.#################----------------........."
+sudo apt install openjdk-8-jdk -y
+java -version
+sudo apt install -y maven
+mvn -v
+
+
+
+echo ".........----------------#################._.-.-JENKINS-.-._.#################----------------........."
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install -y jenkins
+systemctl daemon-reload
+systemctl enable jenkins
+sudo systemctl start jenkins
+#sudo systemctl status jenkins
+sudo usermod -a -G docker jenkins
+echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+echo ".........----------------#################._.-.-COMPLETED-.-._.#################----------------........."
+
+Script to setup jenkins-plugins:
+  #!/bin/bash
+JENKINS_URL="http://localhost:8080"
+
+JENKINS_CRUMB=$(curl -s --cookie-jar /tmp/cookies -u admin:admin $JENKINS_URL/crumbIssuer/api/json  | jq .crumb -r) 
+
+JENKINS_TOKEN=$(curl -s -X POST -H "Jenkins-Crumb:"${JENKINS_CRUMB}"" --cookie /tmp/cookies  $JENKINS_URL/me/descriptorByName/jenkins.security.ApiTokenProperty/generateNewToken?newTokenName=\demo-token66 -u admin:admin | jq .data.tokenValue -r) 
+
+echo $JENKINS_URL
+echo $JENKINS_CRUMB
+echo $JENKINS_TOKEN
+
+while read plugin; do
+   echo "........Installing ${plugin} .."
+   curl -s POST --data "<jenkins><install plugin='${plugin}' /></jenkins>" -H 'Content-Type: text/xml' $JENKINS_URL/pluginManager/installNecessaryPlugins --user admin:$JENKINS_TOKEN
+done < plugins.txt
+
+/var/spool/cron/crontabs
+#### we also need to do a restart for some plugins
+
+#### check all plugins installed in jenkins
+# 
+# http://<jenkins-url>/script
+
+# Jenkins.instance.pluginManager.plugins.each{
+#   plugin -> 
+#     println ("${plugin.getDisplayName()} (${plugin.getShortName()}): ${plugin.getVersion()}")
+# }
+
+
+#### Check for updates/errors - http://<jenkins-url>/updateCenter

@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.confirmOnExit": "always",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorWidth": 2,
+    "terminal.integrated.enableBell": false,
+    "terminal.integrated.altClickMovesCursor": false
+}

@@ -1,0 +1,35 @@
+#!/bin/bash
+# Author: Team3.Group5:HealthApp
+# This script is for o backup and archive all logs from /var/log/auth.log
+echo " " 
+echo "step 1: list all logs from the file:"
+echo " "
+cat /var/log/auth.log 
+echo " "
+echo "step 2: re-direct the output to the new file:"
+echo " "
+echo "Group5.07-30-2022.txt"
+echo " "
+cat /var/log/auth.log > Group5.07-30-2022.txt
+echo " "
+echo "grep the new file from the directory"
+echo " "
+ls | grep Group5.07-30-2022.txt
+echo " "
+echo "Done!"
+echo "step 3: transfer the new file to the remote server with provided credentials:"
+Transfer the new file to remote server with the details: scp 
+	#file name: Group5.07-30-2022
+	#destination IP address: 172.31.12.36 
+	#Team3key.pem: ('team3key.pem' - see chat)
+	#destination Username: team3
+	#Destination Directory: /tmp/monitor
+echo " "
+echo "establish a link with the remote server using the key in hosts download directory"
+cd Donwloads
+echo "paste key"
+echo "type yes and hit enter"
+echo "enter file transfer command"
+scp Group5.07-30-2022.txt team3@172.31.12.36:/tmp/monitor
+echo "confirm successful transfer on remote server"
+

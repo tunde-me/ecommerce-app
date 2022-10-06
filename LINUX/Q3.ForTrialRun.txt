@@ -1,0 +1,29 @@
+#!/bin/bash
+#script to mount and unmount extra volume to ec2 instance
+echo  "Welcome to Etech Consulting!!!"
+echo "step1: creating a mount point at /mnt"
+echo " "
+read -p "Please enter your directory name for the mount point: " Team3.Group5:HealthApp
+sudo mkdir /mnt/$dir
+lsblk
+echo " "
+echo “step2: format the new drive”
+sudo mkfs -t ext4 /dev/xvdf
+echo " "
+echo “step2: mount the new volume”
+sudo mount /dev/xvdf /mnt/Team3.Group5:HealthApp
+echo " "
+echo “step4: check and verify that the extra disk has been mounted
+lsblk
+echo “check new data free space in new mount”
+df -h /mnt/Team3.Group5:HealthApp
+echo " "
+echo “step5: add entry for new drive in 	/etc/fstab file”
+ "/dev/xvdf /mnt/ Team3.Group5:HealthApp ext4  defaults  0 1" | sudo tee /etc/fstab
+echo “to see if the mount was recorded:”
+sudo vi /etc/fstab Team3.Group5:HealthApp
+sudo cat /etc/fstab | grep $ Team3.Group5:HealthApp  
+
+echo "Unmounting"
+echo " "
+sudo unmount /dev/xvfg mnt/Team3.Group5:HealthApp  

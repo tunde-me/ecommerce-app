@@ -1,0 +1,34 @@
+Team3 Introduction:
+Topics:
+  1. Environment Setup
+  - Aws 
+  - ssh client ( putty, mobaxterm,gitbash,vscode)
+  - text editor( sublime text,vscode,notepad)
+  2. Systems requirement and applications needed
+  - Good performance computing Systems
+  - Stable internet connections
+  3. Introduction to computer Systems
+  Introduction to computer systems:
+    - RAM ---> Random Access Memory
+      RAM is use to temporal data storage
+    - CPU --> Central Processing Unit 
+    - Storage --> use to permenently store data
+  4. Introduction to Operating Systems
+
+  - What is an operating system?
+  ans: An operating system is a piece of code written in a specific programming language which is use to manage 
+       computer resources.
+       An operating system is a multi-task code
+
+  - what is an application?
+  Ans: An application is a piece of code written in a specific programmming language that does a specific
+       task 
+
+  - what is a server?
+  Ans: A server is a super computer that comes with extra processing powers
+
+  - EC2 --> Elastic Compute Cloud
+
+  - VM ---> Virtual Machine
+
+  - EC2 instance 

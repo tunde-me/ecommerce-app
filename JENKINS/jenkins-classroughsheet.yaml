@@ -1,0 +1,59 @@
+pipeline {
+	agent any 
+		stages{
+			stage('1-clone-Temi'){
+				steps{
+				checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-id', url: 'https://github.com/etechdevops/team3-hook.git']]])
+				git branch: 'main', credentialsId: 'github-id', url: 'https://github.com/etechDevops/team3-hook.git'
+				}
+			}
+			stage('2-systemcheck-judith'){
+				steps{
+					sh 'bash -x /var/lib/jenkins/workspace/team3-2-pipeline/judith.sh'
+				}
+			}
+		}
+}
+
+
+pipeline {
+	agent any 
+	tools {
+		Maven '$maven3.2'
+		Ansible 'Ansible'
+		$toolname '$name-value' 
+	}
+	environment = 'dev'
+	projectname = 'appdeploy'
+	branch_name = [ 'main','stage']
+	stages {
+		stage('1-git-clone'){
+			codecoverage= '90'
+			steps{
+				if [[ $branch = 'main']]; then
+                  sh 'action1'
+                  fi 
+			}
+		}
+		stage('2-mavenbuild'){
+			when {
+				branch 'main'
+			}
+			steps{
+				sh 'mvn package'
+			}
+		}
+		stage('3-unittest'){
+			steps{
+				sh 'mvn test'
+			}
+		}
+		stage('4-deploytoartifactory'){
+			steps{
+				sh 'mvn deploy'
+			}
+		}
+	}
+} 
+
+stage-level variable and top-variable

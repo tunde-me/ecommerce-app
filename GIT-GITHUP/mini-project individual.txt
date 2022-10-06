@@ -1,0 +1,26 @@
+Etech consulting Devops Master class
+
+mini-project: individual
+
+1. what is git? GIT is a version control system (VCS) used for source code management 
+2. what do you understand by version control? Version control refers to the ability to allow multiple users
+ add to a  code while updating and tracking all the changes without any code conflicts. 
+3. How can you contribute to a project in github? 
+4. Create a file called "yourname" and push to your remote repository
+5. compelete the following commands by stating their use cases:
+- git init: this is a command used to create (initialize) an empty git repository or reinitialize an existing repository.
+- git pull: used to update local working branch with all new commits from the corresponding remote branch. 
+- git push: the command to upload or send commits from local repository to remote repository.
+- git add $filename:used to add a new or updated file to the staging area.
+- git clone: this is the command used to download a repository (including files, branches and commits) or project from github to a local repository.
+- git branch; used to create a copy of the main code in a separate file.
+- git checkout: used to create a new branch and check out in it.
+- git commit: used to save changes in staged area to a local repository.
+- git switch: used to change from one branch to another, in contrast to git restore with undoes changes from a commit.
+- git config --global user.name: used to set global (all repositories) commit username in git.
+- git config --global user.email: used to set global (all repositories) email in git
+- git fetch: used to download a file, branch, commit, tag from a remote repository.
+- git remote -v:	 used to show a list of the remote repositories associated with the local repository.
+- git remote add: used to add a remote to the local repository.
+
+NB: Please complete by just one sentence of what each command is use for due friday midnight

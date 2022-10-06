@@ -1,0 +1,28 @@
+Please enter your (PIN) name:Team3,Group5
+Welcome Team3,Group5 to this ATM!
+Welcome!
+Please insert your debit card
+Please enter your (PIN) name:
+Team3.G5
+Your account balance is:./atm.sh: line 13: read: `0,000': not a valid identifier
+How much do you want to withdraw?:$5000
+Your current balance is:
+./atm.sh: line 16: read: `0,000': not a valid identifier
+Thank you for banking with us today Fri Jul 29 03:11:38 UTC 2022
+whoami
+./atm.sh: line 19: /home/ubuntu: Is a directory
+
+
+Please enter your (PIN) name:Team3.Group5
+Welcome Team3.Group5 to this ATM!
+Please insert your debit card
+Please enter your (PIN) name:
+t3g5
+-p Your account balance is: expr 0,000.00
+./atm2.sh: line 11: read: `0,000': not a valid identifier
+How much do you want to withdraw?:5000
+withdrawYour current balance is:
+./atm2.sh: line 14: read: `0,000': not a valid identifier
+Thank you for banking with us todayFri Jul 29 03:25:31 UTC 2022
+whoami
+ubuntu@tunde:~$

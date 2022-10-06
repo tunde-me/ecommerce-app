@@ -1,0 +1,57 @@
+sunday,07-03-2022: 
+
+Linux commands:
+  Bash = Bornagain Shell
+  / --> root directory
+
+  two types of users
+  1.regular users ---> local user
+  2.superuser --> root user
+
+  /bin   /sbin
+
+  sudo == superuserdoer
+
+  cd = change directory
+  sudo hostnamectl set-hostname etech-linux
+  su == swicth user
+  pwd == Present working directory 
+  /home/ubuntu ==ubuntu user home directory
+  ls == lists
+  mkdir  ==make a directory
+  touch file{1..10} --. use to create multiple files
+  vi ---> virtual instrument
+
+NOTE: WE ls to see the content of a directory
+      WE cat a file to see its contents
+
+ll --> long list
+ll -lh --> print directory contents with their permissions and file sizes
+
+h stands for human readable format
+note: you can not delete a directory that contents data
+rmdir --> to remove a directory gracefully after clean up
+rm -rf --> use to forcely remove a directory with contents
+
+tail -n  --> use to filter contents of a file from the last nth lines
+head -n  --> use to filter contents of a file from the first nth lines
+cat -n /etc/passwd --> to display the content of a file with numbers
+wc -l /etc/passwd  --> to check the number of lines in a file
+wc -w /etc/passwd  --> to check the number of words in a file
+cat -n /etc/passwd | sed -n -e '20,25p' --> use to stream contents of a large file from lines
+20 to line 25
+
+less --> is use to display contents of a file by small increment %
+
+more --> is use to display contents of a file in large increment %
+sort --> Arrange the content of a file from A-Z
+sort -r --> Arrange the content of a file from Z-A
+logname --> use to check who originally log into the server
+whoami --> use to check who is currently using the terminal or Shell
+watch --> use to monitor the content of directory or file every 2s
+echo --> use to write or print data into a file
+mv --> use to rename a file
+cp --> use to create a copy of a file
+cp -r --> use to create a copy of a directory
+
+

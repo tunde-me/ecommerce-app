@@ -1,0 +1,47 @@
+How to run a script in debugging mode: 
+command: bash -x scriptname
+Reason: This is required when the script is not running as expected.
+It runs one line at a time, to troubleshoot the malfuntioning part of the script.
+Degugging mode displays the process to identify the lines with errors.
+
+To run a script in backgrounde mode: ./scriptname.sh&
+bring a process from background to foreground: fg $PID
+run a script in network instabilitynohup ./scriptname.sh 
+
+read -p printing 2 lines as 1 line
+read -s prints a line in concealement.
+read -p -s combines the 2 commands, the -p will echo and print in on eline whil the -s will read the pin in the same line. 
+e.g read -p -s "please enter your pin: " pin
+
+a "y loop" is used to loop over a process until the condition changes.
+y command 1 
+
+break command is used to monitor some processes in the vi command
+
+when comparing strings uses [[ ]] e.g 
+name= 'team3
+echo -n "please enter your group
+read group 
+if [['$group' == ]] this compares character by character
+when comparing integers use []. the operator is = or -eq
+How have used used y loop in your previous projects?
+
+
+A for loop is used for iteration e.g for i in mon tue wed; do echo $1.
+What expression updates the value of i.
+i stands for iterator (0,1,2,3,...)
+$i stands for value of the index iterator
+i starts from i=0 (which will be mon in this case)
+Based on the i=[$i +1]
+For the 1st iteration, the $i is 0
+For 2nd iteration $i is 0+1 = 1, which is tue
+FOr 3rd iteration $i is 1+1 = 2, which is wed
+for i on days;
+do 
+
+versions=(tag1 tag2 tag3 tag4)
+for in ${versions[@]}; do
+action...
+done
+
+an "if loop" is used to set a condition for execution.
